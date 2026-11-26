@@ -29,7 +29,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
   const resumeButtonTheme =
     theme === 'dark'
       ? 'border-white/90 bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.12)] hover:bg-neutral-100 hover:shadow-[0_5px_22px_rgba(255,255,255,0.2)]'
-      : 'border-black/90 bg-black text-white shadow-[0_2px_14px_rgba(0,0,0,0.14)] hover:bg-neutral-900 hover:shadow-[0_5px_22px_rgba(0,0,0,0.22)]';
+      : 'border-black/90 bg-[#000000] text-[#ffffff] shadow-[0_2px_14px_rgba(0,0,0,0.14)] hover:bg-[#171717] hover:shadow-[0_5px_22px_rgba(0,0,0,0.22)]';
 
   const resumeButtonClass = `group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 ${resumeButtonTheme}`;
 
