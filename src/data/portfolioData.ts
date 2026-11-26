@@ -16,7 +16,7 @@ export const ASSETS = {
 };
 
 export const PROFILE = {
-  name: 'Ananya Nair',
+  name: 'Sajid Aman',
   classYear: 'Class of 2027',
   school: 'Palo Alto High School',
   location: 'Palo Alto, California',
