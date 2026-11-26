@@ -68,6 +68,14 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-full border border-white/30 px-5 py-2 text-xs font-semibold tracking-wide text-white transition-colors hover:border-white hover:bg-white hover:text-black lg:inline-flex"
+          >
+            Resume
+          </a>
           <button
             type="button"
             onClick={onToggleTheme}
@@ -114,6 +122,14 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
               );
             })}
           </div>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex min-h-[44px] items-center justify-center rounded-full border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-black"
+          >
+            Resume
+          </a>
         </nav>
       )}
     </header>
