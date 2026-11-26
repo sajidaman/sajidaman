@@ -123,8 +123,7 @@ body { line-height: var(--a11y-line-height, 1.5); }
   outline: var(--a11y-focus-width, 3px) solid #A30000 !important;
   outline-offset: 3px !important;
 }
-html.a11y-contrast-1 { filter: contrast(1.12); }
-html.a11y-contrast-2 { filter: contrast(1.35); }
+
 html.a11y-link-style-1 a,
 html.a11y-link-style-2 a { text-decoration: underline !important; text-underline-offset: .2em; }
 html.a11y-link-style-2 a { text-decoration-thickness: 2px !important; font-weight: 700 !important; }
@@ -211,4 +210,54 @@ html[data-theme="dark"] a[data-resume-cta="true"] svg {
   color: #000000 !important;
   stroke: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
+}
+
+
+/* Accessibility display adjustments apply to the site content, not the
+   floating controls, so the panel remains legible and correctly positioned. */
+.portfolio-a11y-content {
+  filter: brightness(var(--a11y-brightness, 1)) contrast(var(--a11y-contrast, 1));
+}
+.portfolio-a11y-panel {
+  background: #ffffff;
+  color: #17191d;
+  border-color: #e5e7eb;
+  color-scheme: light;
+}
+html[data-theme="dark"] .portfolio-a11y-panel {
+  background: #11151e;
+  color: #f5f5f7;
+  border-color: #374151;
+  color-scheme: dark;
+}
+.portfolio-a11y-panel [class*="border-neutral-"] { border-color: #e5e7eb; }
+.portfolio-a11y-panel [class*="text-neutral-"] { color: #646b75; }
+.portfolio-a11y-panel [class*="bg-white"] { background-color: #ffffff; }
+.portfolio-a11y-panel [class*="hover:bg-neutral-"]:hover { background-color: #f3f4f6; }
+html[data-theme="dark"] .portfolio-a11y-panel [class*="border-neutral-"] { border-color: #374151; }
+html[data-theme="dark"] .portfolio-a11y-panel [class*="text-neutral-"] { color: #a1a1aa; }
+html[data-theme="dark"] .portfolio-a11y-panel [class*="bg-white"] { background-color: #1f2937; }
+html[data-theme="dark"] .portfolio-a11y-panel [class*="hover:bg-neutral-"]:hover { background-color: #273244; }
+.portfolio-a11y-theme-choice {
+  background: transparent;
+  color: #525a66;
+  border-color: #d1d5db;
+}
+.portfolio-a11y-theme-choice[aria-pressed="true"] {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #991b1b;
+}
+html[data-theme="dark"] .portfolio-a11y-theme-choice {
+  color: #d1d5db;
+  border-color: #4b5563;
+}
+html[data-theme="dark"] .portfolio-a11y-theme-choice[aria-pressed="true"] {
+  background: #451a1a;
+  color: #fecaca;
+  border-color: #b91c1c;
+}
+.portfolio-a11y-panel button:focus-visible,
+.portfolio-a11y-panel input:focus-visible {
+  outline-color: #a30000 !important;
 }
