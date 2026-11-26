@@ -23,7 +23,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               <div className="h-96 overflow-hidden rounded-3xl border border-white/10 bg-[#141416] lg:h-full lg:min-h-[480px]">
                 <MonochromeImage
                   src={ASSETS.aboutPortrait}
-                  alt="Black and white editorial portrait of Ananya Nair studying beside a library window"
+                  alt="Black and white editorial portrait of Sajid Aman studying beside a library window"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -42,7 +42,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 </h1>
                 <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#A1A1A6] sm:text-base">
                   <p>
-                    I am Ananya Nair, a high school senior in Palo Alto, California. My academic work focuses on translating classical physics and signal processing into compact, affordable diagnostic tools that work outside well-funded laboratories.
+                    I am Sajid Aman, a high school senior in Palo Alto, California. My academic work focuses on translating classical physics and signal processing into compact, affordable diagnostic tools that work outside well-funded laboratories.
                   </p>
                   <p>
                     Whether machining a dual-MEMS chest piece for cardiac auscultation or training physics-constrained neural operators for microfluidic cell sorting, I prefer starting from physical first principles—measuring real noise floors before reaching for deeper software stacks.
