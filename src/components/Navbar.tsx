@@ -79,8 +79,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className={`hidden lg:inline-flex ${resumeButtonClass}`}
-            style={{ backgroundColor: theme === 'light' ? '#000000' : '#ffffff', color: theme === 'light' ? '#ffffff' : '#000000', borderColor: theme === 'light' ? '#000000' : '#ffffff' }}
+            className={`portfolio-resume-button hidden lg:inline-flex ${resumeButtonClass} ${theme === "light" ? "resume-light" : "resume-dark"}` }
           >
             <span className="relative z-10">Resume</span>
             <ArrowUpRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -135,8 +134,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className={`mt-3 min-h-[44px] w-full ${resumeButtonClass}`}
-            style={{ backgroundColor: theme === 'light' ? '#000000' : '#ffffff', color: theme === 'light' ? '#ffffff' : '#000000', borderColor: theme === 'light' ? '#000000' : '#ffffff' }}
+            className={`portfolio-resume-button mt-3 min-h-[44px] w-full ${resumeButtonClass} ${theme === "light" ? "resume-light" : "resume-dark"}` }
           >
             <span className="relative z-10">Resume</span>
             <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
