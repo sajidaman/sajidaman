@@ -43,8 +43,7 @@ html[data-theme="light"] body {
   color: #17191d;
 }
 
-html[data-theme="light"] [class~="bg-black"],
-html[data-theme="light"] [class*="bg-black/"] {
+html[data-theme="light"] [class~="bg-black"] {
   background-color: #f7f8fa !important;
 }
 
