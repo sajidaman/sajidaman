@@ -172,3 +172,43 @@ html[data-theme="dark"] .portfolio-resume-button.resume-dark:hover {
   color: #000000 !important;
 }
 html[data-theme="dark"] .portfolio-resume-button.resume-dark svg { color: #000000 !important; }
+
+
+/* High-specificity CTA rules: the global light-theme text utility overrides
+   must never change the Resume link or its icon. */
+html[data-theme="light"] a[data-resume-cta="true"],
+html[data-theme="light"] a[data-resume-cta="true"]:link,
+html[data-theme="light"] a[data-resume-cta="true"]:visited {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #000000 !important;
+}
+html[data-theme="light"] a[data-resume-cta="true"] *,
+html[data-theme="light"] a[data-resume-cta="true"] svg {
+  color: #ffffff !important;
+  fill: none !important;
+  stroke: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html[data-theme="light"] a[data-resume-cta="true"]:hover {
+  background: #171717 !important;
+  background-color: #171717 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] a[data-resume-cta="true"],
+html[data-theme="dark"] a[data-resume-cta="true"]:link,
+html[data-theme="dark"] a[data-resume-cta="true"]:visited {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  border-color: #ffffff !important;
+}
+html[data-theme="dark"] a[data-resume-cta="true"] *,
+html[data-theme="dark"] a[data-resume-cta="true"] svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
