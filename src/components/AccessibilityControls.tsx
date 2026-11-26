@@ -48,7 +48,7 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     root.style.setProperty('--a11y-font-scale', String(textScale / 100));
     root.style.setProperty('--a11y-line-height', String(lineSpacing / 100));
     root.style.setProperty('--a11y-focus-width', focusStrength + 'px');
-    root.style.filter = `brightness(${brightness / 100})`;
+    root.style.filter = `brightness(${brightness / 100}) contrast(${contrast === 1 ? 1.12 : contrast === 2 ? 1.35 : 1})`;
     const center = cursorSize / 2, ring = cursorSize * .32, dot = cursorSize * .14, stroke = Math.max(1, cursorSize * .045);
     const cursor = (pointer: boolean) => {
       const svg = pointer
