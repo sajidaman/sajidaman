@@ -57,7 +57,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
           }}
           className="font-display text-base font-semibold tracking-tight text-white whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm"
         >
-          Ananya Nair
+          Sajid Aman
         </a>
 
         {/* Zone 2: 5 concise single-line navigation items */}
