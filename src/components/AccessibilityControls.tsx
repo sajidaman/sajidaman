@@ -7,6 +7,15 @@ type RangeSettingProps = {
   onChange: (value: number) => void;
 };
 
+function readA11ySetting(key: string, fallback: number) {
+  try {
+    const stored = localStorage.getItem('sajid-a11y-' + key);
+    return stored === null ? fallback : Number(stored);
+  } catch {
+    return fallback;
+  }
+}
+
 function RangeSetting({ id, label, value, min, max, step = 1, output, minLabel, maxLabel, onChange }: RangeSettingProps) {
   return (
     <div className="rounded-xl border border-neutral-200 px-3 py-2.5 dark:border-neutral-700">
@@ -25,22 +34,26 @@ type Props = { theme: 'dark' | 'light'; onSetTheme: (theme: 'dark' | 'light') =>
 
 export function AccessibilityControls({ theme, onSetTheme }: Props) {
   const [open, setOpen] = useState(false);
-  const [textScale, setTextScale] = useState(() => Number(localStorage.getItem('sajid-a11y-text-scale')) || 100);
-  const [lineSpacing, setLineSpacing] = useState(() => Number(localStorage.getItem('sajid-a11y-line-spacing')) || 150);
-  const [contrast, setContrast] = useState(() => Number(localStorage.getItem('sajid-a11y-contrast')) || 0);
-  const [linkStyle, setLinkStyle] = useState(() => Number(localStorage.getItem('sajid-a11y-link-style')) || 0);
-  const [motion, setMotion] = useState(() => Number(localStorage.getItem('sajid-a11y-motion')) || 0);
-  const [focusStrength, setFocusStrength] = useState(() => Number(localStorage.getItem('sajid-a11y-focus-strength')) || 3);
-  const [cursorSize, setCursorSize] = useState(() => Number(localStorage.getItem('sajid-a11y-cursor-size')) || 20);
-  const [brightness, setBrightness] = useState(() => Number(localStorage.getItem('sajid-a11y-brightness')) || 100);
+  const [textScale, setTextScale] = useState(() => readA11ySetting('text-scale', 100));
+  const [lineSpacing, setLineSpacing] = useState(() => readA11ySetting('line-spacing', 150));
+  const [contrast, setContrast] = useState(() => readA11ySetting('contrast', 0));
+  const [linkStyle, setLinkStyle] = useState(() => readA11ySetting('link-style', 0));
+  const [motion, setMotion] = useState(() => readA11ySetting('motion', 0));
+  const [focusStrength, setFocusStrength] = useState(() => readA11ySetting('focus-strength', 3));
+  const [cursorSize, setCursorSize] = useState(() => readA11ySetting('cursor-size', 20));
+  const [brightness, setBrightness] = useState(() => readA11ySetting('brightness', 100));
 
   useEffect(() => {
     const settings = { textScale, lineSpacing, contrast, linkStyle, motion, focusStrength, cursorSize, brightness };
-    Object.entries(settings).forEach(([key, value]) => localStorage.setItem('sajid-a11y-' + ({
-      textScale: 'text-scale', lineSpacing: 'line-spacing', focusStrength: 'focus-strength',
-      cursorSize: 'cursor-size', linkStyle: 'link-style'
-    } as Record<string, string>)[key] || key, String(value)));
-    localStorage.setItem('sajid-a11y-settings', JSON.stringify(settings));
+    try {
+      Object.entries(settings).forEach(([key, value]) => localStorage.setItem('sajid-a11y-' + ({
+        textScale: 'text-scale', lineSpacing: 'line-spacing', focusStrength: 'focus-strength',
+        cursorSize: 'cursor-size', linkStyle: 'link-style'
+      } as Record<string, string>)[key] || key, String(value)));
+      localStorage.setItem('sajid-a11y-settings', JSON.stringify(settings));
+    } catch {
+      // Accessibility controls remain usable when browser storage is unavailable.
+    }
   }, [textScale, lineSpacing, contrast, linkStyle, motion, focusStrength, cursorSize, brightness]);
 
   useEffect(() => {
@@ -48,7 +61,8 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     root.style.setProperty('--a11y-font-scale', String(textScale / 100));
     root.style.setProperty('--a11y-line-height', String(lineSpacing / 100));
     root.style.setProperty('--a11y-focus-width', focusStrength + 'px');
-    root.style.filter = `brightness(${brightness / 100}) contrast(${contrast === 1 ? 1.12 : contrast === 2 ? 1.35 : 1})`;
+    root.style.setProperty('--a11y-brightness', String(brightness / 100));
+    root.style.setProperty('--a11y-contrast', String(contrast === 1 ? 1.12 : contrast === 2 ? 1.35 : 1));
     const center = cursorSize / 2, ring = cursorSize * .32, dot = cursorSize * .14, stroke = Math.max(1, cursorSize * .045);
     const cursor = (pointer: boolean) => {
       const svg = pointer
@@ -58,13 +72,12 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     };
     root.style.setProperty('--a11y-cursor-default', cursor(false));
     root.style.setProperty('--a11y-cursor-pointer', cursor(true));
-    root.classList.toggle('a11y-contrast-1', contrast === 1);
-    root.classList.toggle('a11y-contrast-2', contrast === 2);
+
     root.classList.toggle('a11y-link-style-1', linkStyle === 1);
     root.classList.toggle('a11y-link-style-2', linkStyle === 2);
     root.classList.toggle('a11y-motion-1', motion === 1);
     root.classList.toggle('a11y-motion-2', motion === 2);
-    return () => { root.style.filter = ''; };
+
   }, [textScale, lineSpacing, contrast, linkStyle, motion, focusStrength, cursorSize, brightness]);
 
   const reset = () => {
@@ -76,7 +89,7 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     <div className="fixed bottom-5 left-5 z-[80]">
       {open && (
         <section id="portfolio-accessibility-panel" aria-label="Accessibility and display settings"
-          className="mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border border-neutral-200 bg-white p-3 text-neutral-900 shadow-2xl dark:border-neutral-700 dark:bg-[#11151e] dark:text-white">
+          className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl">
           <div className="mb-3 flex items-center justify-between gap-2">
             <h2 className="text-sm font-bold tracking-wide">Accessibility</h2>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close accessibility settings"
@@ -88,8 +101,8 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
               <div className="rounded-xl border border-neutral-200 px-3 py-3 dark:border-neutral-700">
                 <span className="mb-1.5 block text-[13px] font-medium">Colour theme</span>
                 <div className="grid grid-cols-2 gap-2" role="group" aria-label="Colour theme">
-                  <button type="button" aria-pressed={theme === 'light'} onClick={() => onSetTheme('light')} className={`inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700 ${theme === 'light' ? 'border-red-800 bg-red-50 text-red-800 dark:bg-red-950/40 dark:text-red-200' : 'border-neutral-200 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300'}`}><Sun size={14} /> Light</button>
-                  <button type="button" aria-pressed={theme === 'dark'} onClick={() => onSetTheme('dark')} className={`inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700 ${theme === 'dark' ? 'border-red-800 bg-red-50 text-red-800 dark:bg-red-950/40 dark:text-red-200' : 'border-neutral-200 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300'}`}><Moon size={14} /> Dark</button>
+                  <button type="button" aria-pressed={theme === 'light'} onClick={() => onSetTheme('light')} aria-pressed={theme === 'light'} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Sun size={14} /> Light</button>
+                  <button type="button" aria-pressed={theme === 'dark'} onClick={() => onSetTheme('dark')} aria-pressed={theme === 'dark'} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Moon size={14} /> Dark</button>
                 </div>
               </div>
               <RangeSetting id="portfolio-a11y-brightness" label="Brightness" value={brightness} min={50} max={150} output={brightness + '%'} minLabel="Dim" maxLabel="Bright" onChange={setBrightness} />
