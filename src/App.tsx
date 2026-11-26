@@ -29,7 +29,16 @@ import {
   parsePageFromPath,
 } from './utils/portfolioLogic';
 
+type Theme = 'dark' | 'light';
+
 export default function App() {
+  const [theme, setTheme] = useState<Theme>(() => {
+    try {
+      return localStorage.getItem('sajid-portfolio-theme') === 'light' ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
   const [currentPage, setCurrentPage] = useState<PageId>(() =>
     parsePageFromPath(window.location.pathname)
   );
@@ -38,6 +47,16 @@ export default function App() {
     useState<PublicationItem | null>(null);
   const [selectedArchive, setSelectedArchive] = useState<ArchiveItem | null>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoFrame | null>(null);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    try {
+      localStorage.setItem('sajid-portfolio-theme', theme);
+    } catch {
+      // Theme still works for the current session when storage is unavailable.
+    }
+  }, [theme]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -66,7 +85,12 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-[#F5F5F7]">
-      <Navbar currentPage={currentPage} onNavigate={navigateTo} />
+      <Navbar
+        currentPage={currentPage}
+        onNavigate={navigateTo}
+        theme={theme}
+        onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
+      />
 
       <main className="flex-1" data-page={currentPage}>
         {currentPage === 'home' && (
