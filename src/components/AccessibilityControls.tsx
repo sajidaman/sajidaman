@@ -101,8 +101,8 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
               <div className="rounded-xl border border-neutral-200 px-3 py-3 dark:border-neutral-700">
                 <span className="mb-1.5 block text-[13px] font-medium">Colour theme</span>
                 <div className="grid grid-cols-2 gap-2" role="group" aria-label="Colour theme">
-                  <button type="button" aria-pressed={theme === 'light'} onClick={() => onSetTheme('light')} aria-pressed={theme === 'light'} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Sun size={14} /> Light</button>
-                  <button type="button" aria-pressed={theme === 'dark'} onClick={() => onSetTheme('dark')} aria-pressed={theme === 'dark'} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Moon size={14} /> Dark</button>
+                  <button type="button" aria-pressed={theme === 'light'} onClick={() => onSetTheme('light')} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Sun size={14} /> Light</button>
+                  <button type="button" aria-pressed={theme === 'dark'} onClick={() => onSetTheme('dark')} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Moon size={14} /> Dark</button>
                 </div>
               </div>
               <RangeSetting id="portfolio-a11y-brightness" label="Brightness" value={brightness} min={50} max={150} output={brightness + '%'} minLabel="Dim" maxLabel="Bright" onChange={setBrightness} />
