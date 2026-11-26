@@ -42,7 +42,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
 
         <nav
           aria-label="Portfolio pages"
-          className="hidden min-w-0 flex-1 items-center justify-center gap-x-4 gap-y-2 overflow-x-auto py-2 text-[11px] font-medium text-[#A1A1A6] lg:flex"
+          className="hidden min-w-0 flex-1 items-center justify-center gap-x-6 gap-y-2 overflow-x-auto py-2 text-[11px] font-medium text-[#A1A1A6] lg:flex"
         >
           {PAGE_DEFINITIONS.map((item) => {
             const active = currentPage === item.id;
