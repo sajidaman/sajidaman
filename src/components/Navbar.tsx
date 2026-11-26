@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { ChevronDown, Menu, Moon, Sun, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import type { PageId } from '../types/portfolio';
 import { PAGE_DEFINITIONS } from '../utils/portfolioLogic';
 
@@ -10,71 +10,52 @@ interface NavbarProps {
   onToggleTheme: () => void;
 }
 
-const PRIMARY_NAV_IDS: PageId[] = ['about', 'experience', 'projects', 'publication'];
-const MORE_NAV_IDS: PageId[] = ['awards', 'archive', 'fun', 'home'];
-
 export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: NavbarProps) {
-  const [moreOpen, setMoreOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const isMoreActive =
-    currentPage === 'awards' || currentPage === 'archive' || currentPage === 'fun';
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMoreOpen(false);
-        setMobileOpen(false);
-      }
-    };
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setMoreOpen(false);
-      }
+      if (event.key === 'Escape') setMobileOpen(false);
     };
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const handleSelect = (page: PageId) => {
-    setMoreOpen(false);
     setMobileOpen(false);
     onNavigate(page);
   };
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between gap-8 px-6">
+      <div className="mx-auto flex min-h-14 max-w-[1440px] items-center justify-between gap-5 px-5">
         <a
           href="/"
           onClick={(e) => {
             e.preventDefault();
             handleSelect('home');
           }}
-          className="font-display text-base font-semibold tracking-tight text-white whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm"
+          className="shrink-0 rounded-sm font-display text-base font-semibold tracking-tight text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
         >
           Sajid Aman
         </a>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-7 text-xs font-medium text-[#A1A1A6]">
-          {PRIMARY_NAV_IDS.map((id) => {
-            const item = PAGE_DEFINITIONS.find((p) => p.id === id)!;
-            const active = currentPage === id;
+        <nav
+          aria-label="Portfolio pages"
+          className="hidden min-w-0 flex-1 items-center justify-center gap-x-4 gap-y-2 overflow-x-auto py-2 text-[11px] font-medium text-[#A1A1A6] lg:flex"
+        >
+          {PAGE_DEFINITIONS.map((item) => {
+            const active = currentPage === item.id;
             return (
               <a
-                key={id}
+                key={item.id}
                 href={item.path}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleSelect(id);
+                  handleSelect(item.id);
                 }}
                 aria-current={active ? 'page' : undefined}
-                className={`whitespace-nowrap shrink-0 py-1 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm ${
+                className={`shrink-0 whitespace-nowrap rounded-sm py-1 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 ${
                   active
                     ? 'text-white underline underline-offset-8 decoration-white/80'
                     : 'hover:text-white'
@@ -84,58 +65,9 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
               </a>
             );
           })}
-
-          <div ref={dropdownRef} className="relative">
-            <button
-              type="button"
-              onClick={() => setMoreOpen((prev) => !prev)}
-              aria-expanded={moreOpen}
-              aria-haspopup="menu"
-              className={`inline-flex items-center gap-1 whitespace-nowrap shrink-0 py-1 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm ${
-                isMoreActive || moreOpen
-                  ? 'text-white underline underline-offset-8 decoration-white/80'
-                  : 'hover:text-white'
-              }`}
-            >
-              <span>More</span>
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-150 ${moreOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
-            </button>
-
-            {moreOpen && (
-              <div
-                role="menu"
-                aria-label="Additional portfolio pages"
-                className="absolute right-0 mt-3 w-64 rounded-2xl border border-white/12 bg-[#141416]/95 p-2 shadow-2xl backdrop-blur-2xl"
-              >
-                {MORE_NAV_IDS.map((id) => {
-                  const item = PAGE_DEFINITIONS.find((p) => p.id === id)!;
-                  const active = currentPage === id;
-                  return (
-                    <a
-                      key={id}
-                      role="menuitem"
-                      href={item.path}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleSelect(id);
-                      }}
-                      className={`block rounded-xl px-3.5 py-2.5 transition-colors duration-150 ${
-                        active ? 'bg-white text-black' : 'text-[#F5F5F7] hover:bg-white/10'
-                      }`}
-                    >
-                      <div className="text-xs font-semibold">{item.label}</div>
-                      <div className={`mt-0.5 text-[11px] leading-snug ${active ? 'text-neutral-700' : 'text-[#86868B]'}`}>
-                        {item.description}
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            )}
-          </div>
         </nav>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex shrink-0 items-center gap-3">
           <button
             type="button"
             onClick={onToggleTheme}
@@ -146,25 +78,12 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
 
-          <a
-            href="/contact"
-            onClick={(e) => {
-              e.preventDefault();
-              handleSelect('contact');
-            }}
-            className={`hidden md:inline-flex items-center justify-center rounded-full px-4 py-1.5 text-xs font-medium whitespace-nowrap shrink-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
-              currentPage === 'contact' ? 'bg-zinc-200 text-black' : 'bg-white text-black hover:bg-zinc-200'
-            }`}
-          >
-            Contact me
-          </a>
-
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-white/10 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-white/10 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -172,7 +91,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
       </div>
 
       {mobileOpen && (
-        <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-[#0A0A0C] px-6 py-4 md:hidden">
+        <nav aria-label="Mobile portfolio pages" className="border-t border-white/10 bg-[#0A0A0C] px-6 py-4 lg:hidden">
           <div className="grid grid-cols-1 gap-1">
             {PAGE_DEFINITIONS.map((item) => {
               const active = currentPage === item.id;
