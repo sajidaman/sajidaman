@@ -26,6 +26,11 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
     onNavigate(page);
   };
 
+  const resumeButtonTheme =
+    theme === 'dark'
+      ? 'border-white bg-white text-black hover:border-neutral-200 hover:bg-neutral-200 hover:text-black'
+      : 'border-black bg-black text-white hover:border-neutral-800 hover:bg-neutral-800 hover:text-white';
+
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/85 backdrop-blur-xl">
       <div className="mx-auto flex min-h-14 max-w-[1440px] items-center justify-between gap-5 px-5">
@@ -72,7 +77,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-full border border-white/30 px-5 py-2 text-xs font-semibold tracking-wide text-white transition-colors hover:border-white hover:bg-white hover:text-black lg:inline-flex"
+            className={`hidden rounded-full border px-5 py-2 text-xs font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 lg:inline-flex ${resumeButtonTheme}`}
           >
             Resume
           </a>
@@ -126,7 +131,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 flex min-h-[44px] items-center justify-center rounded-full border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-black"
+            className={`mt-3 flex min-h-[44px] items-center justify-center rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors ${resumeButtonTheme}`}
           >
             Resume
           </a>
