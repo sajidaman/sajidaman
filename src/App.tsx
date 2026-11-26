@@ -7,6 +7,7 @@ import {
   PublicationDetailModal,
 } from './components/Modals';
 import { Navbar } from './components/Navbar';
+import { AccessibilityControls } from './components/AccessibilityControls';
 import { AboutPage } from './pages/AboutPage';
 import { ArchivePage } from './pages/ArchivePage';
 import { AwardsPage } from './pages/AwardsPage';
@@ -134,6 +135,7 @@ export default function App() {
         frame={selectedPhoto}
         onClose={() => setSelectedPhoto(null)}
       />
+      <AccessibilityControls theme={theme} onSetTheme={setTheme} />
     </div>
   );
 }
