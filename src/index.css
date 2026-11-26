@@ -147,3 +147,28 @@ html.a11y-motion-2 *::after {
     cursor: var(--a11y-cursor-pointer, pointer);
   }
 }
+
+
+/* Resume CTA colors must win over the broad light-theme utility overrides. */
+html[data-theme="light"] .portfolio-resume-button.resume-light,
+html[data-theme="light"] .portfolio-resume-button.resume-light:visited {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+html[data-theme="light"] .portfolio-resume-button.resume-light:hover {
+  background-color: #171717 !important;
+  color: #ffffff !important;
+}
+html[data-theme="light"] .portfolio-resume-button.resume-light svg { color: #ffffff !important; }
+html[data-theme="dark"] .portfolio-resume-button.resume-dark,
+html[data-theme="dark"] .portfolio-resume-button.resume-dark:visited {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+html[data-theme="dark"] .portfolio-resume-button.resume-dark:hover {
+  background-color: #f5f5f5 !important;
+  color: #000000 !important;
+}
+html[data-theme="dark"] .portfolio-resume-button.resume-dark svg { color: #000000 !important; }
