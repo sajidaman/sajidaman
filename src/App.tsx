@@ -51,8 +51,8 @@ export default function App() {
     const pageMeta = PAGE_DEFINITIONS.find((p) => p.id === currentPage);
     document.title =
       currentPage === 'home'
-        ? 'Ananya Nair — Academic Portfolio'
-        : `${pageMeta?.label ?? 'Portfolio'} · Ananya Nair`;
+        ? 'Sajid Aman — Academic Portfolio'
+        : `${pageMeta?.label ?? 'Portfolio'} · Sajid Aman`;
   }, [currentPage]);
 
   const navigateTo = (page: PageId) => {
