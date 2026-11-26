@@ -86,6 +86,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-[#F5F5F7]">
+      <div className="portfolio-a11y-content flex min-h-screen flex-col">
       <Navbar
         currentPage={currentPage}
         onNavigate={navigateTo}
@@ -135,6 +136,7 @@ export default function App() {
         frame={selectedPhoto}
         onClose={() => setSelectedPhoto(null)}
       />
+      </div>
       <AccessibilityControls theme={theme} onSetTheme={setTheme} />
     </div>
   );
