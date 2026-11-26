@@ -114,3 +114,36 @@ html[data-theme="light"] .text-black {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Floating accessibility controls, adapted for the personal portfolio. */
+html { font-size: calc(16px * var(--a11y-font-scale, 1)); }
+body { line-height: var(--a11y-line-height, 1.5); }
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: var(--a11y-focus-width, 3px) solid #A30000 !important;
+  outline-offset: 3px !important;
+}
+html.a11y-contrast-1 { filter: contrast(1.12); }
+html.a11y-contrast-2 { filter: contrast(1.35); }
+html.a11y-link-style-1 a,
+html.a11y-link-style-2 a { text-decoration: underline !important; text-underline-offset: .2em; }
+html.a11y-link-style-2 a { text-decoration-thickness: 2px !important; font-weight: 700 !important; }
+html.a11y-motion-1 *,
+html.a11y-motion-1 *::before,
+html.a11y-motion-1 *::after {
+  scroll-behavior: auto !important; animation-duration: .15ms !important;
+  animation-iteration-count: 1 !important; transition-duration: .15ms !important;
+}
+html.a11y-motion-2 *,
+html.a11y-motion-2 *::before,
+html.a11y-motion-2 *::after {
+  scroll-behavior: auto !important; animation: none !important; transition: none !important;
+}
+.portfolio-a11y-range { height: 1.25rem; accent-color: #8B0000; cursor: pointer; }
+.portfolio-a11y-range:focus-visible { outline: 2px solid #A30000; outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  body, body * { cursor: var(--a11y-cursor-default, auto); }
+  a, button, [role="button"], input[type="range"], label {
+    cursor: var(--a11y-cursor-pointer, pointer);
+  }
+}
