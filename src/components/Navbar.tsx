@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
 import type { PageId } from '../types/portfolio';
 import { PAGE_DEFINITIONS } from '../utils/portfolioLogic';
 
@@ -28,8 +28,10 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
 
   const resumeButtonTheme =
     theme === 'dark'
-      ? 'border-white bg-white text-black hover:border-neutral-200 hover:bg-neutral-200 hover:text-black'
-      : 'border-black bg-black text-white hover:border-neutral-800 hover:bg-neutral-800 hover:text-white';
+      ? 'border-white/90 bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.12)] hover:bg-neutral-100 hover:shadow-[0_5px_22px_rgba(255,255,255,0.2)]'
+      : 'border-black/90 bg-black text-white shadow-[0_2px_14px_rgba(0,0,0,0.14)] hover:bg-neutral-900 hover:shadow-[0_5px_22px_rgba(0,0,0,0.22)]';
+
+  const resumeButtonClass = `group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border px-5 py-2 text-xs font-semibold tracking-wide transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 ${resumeButtonTheme}`;
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/85 backdrop-blur-xl">
@@ -77,9 +79,10 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className={`hidden rounded-full border px-5 py-2 text-xs font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 lg:inline-flex ${resumeButtonTheme}`}
+            className={`hidden lg:inline-flex ${resumeButtonClass}`}
           >
-            Resume
+            <span className="relative z-10">Resume</span>
+            <ArrowUpRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
           <button
             type="button"
@@ -131,9 +134,10 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className={`mt-3 flex min-h-[44px] items-center justify-center rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors ${resumeButtonTheme}`}
+            className={`mt-3 min-h-[44px] w-full ${resumeButtonClass}`}
           >
-            Resume
+            <span className="relative z-10">Resume</span>
+            <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </nav>
       )}
