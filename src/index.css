@@ -261,3 +261,95 @@ html[data-theme="dark"] .portfolio-a11y-theme-choice[aria-pressed="true"] {
 .portfolio-a11y-panel input:focus-visible {
   outline-color: #a30000 !important;
 }
+
+
+/* Keep the floating accessibility UI in lockstep with the portfolio's
+   data-theme attribute. These scoped rules intentionally outrank the broad
+   light-theme utility overrides used by the rest of the site. */
+.portfolio-a11y-panel {
+  --a11y-panel-bg: #080808;
+  --a11y-panel-surface: #111111;
+  --a11y-panel-text: #f5f5f7;
+  --a11y-panel-muted: #a1a1aa;
+  --a11y-panel-border: #343434;
+  --a11y-panel-hover: #202020;
+  --a11y-panel-accent: #fca5a5;
+  --a11y-panel-accent-bg: #3b1111;
+  box-sizing: border-box;
+  background-color: var(--a11y-panel-bg) !important;
+  color: var(--a11y-panel-text) !important;
+  border-color: var(--a11y-panel-border) !important;
+  color-scheme: dark;
+  isolation: isolate;
+}
+.portfolio-a11y-panel[data-theme="light"] {
+  --a11y-panel-bg: #ffffff;
+  --a11y-panel-surface: #f7f8fa;
+  --a11y-panel-text: #17191d;
+  --a11y-panel-muted: #646b75;
+  --a11y-panel-border: #dfe3e8;
+  --a11y-panel-hover: #eef0f3;
+  --a11y-panel-accent: #991b1b;
+  --a11y-panel-accent-bg: #fef2f2;
+  color-scheme: light;
+}
+.portfolio-a11y-panel,
+.portfolio-a11y-panel * {
+  -webkit-text-fill-color: currentColor;
+}
+.portfolio-a11y-panel h2,
+.portfolio-a11y-panel h3,
+.portfolio-a11y-panel label,
+.portfolio-a11y-panel span,
+.portfolio-a11y-panel output {
+  color: var(--a11y-panel-text) !important;
+}
+.portfolio-a11y-panel h3,
+.portfolio-a11y-panel .text-neutral-500,
+.portfolio-a11y-panel .text-neutral-400 {
+  color: var(--a11y-panel-muted) !important;
+}
+.portfolio-a11y-panel .portfolio-a11y-value,
+.portfolio-a11y-panel .portfolio-a11y-reset {
+  color: var(--a11y-panel-accent) !important;
+}
+.portfolio-a11y-panel [class*="border-neutral-"],
+.portfolio-a11y-panel .portfolio-a11y-theme-choice {
+  border-color: var(--a11y-panel-border) !important;
+}
+.portfolio-a11y-panel [class*="hover:bg-neutral-"]:hover,
+.portfolio-a11y-panel .portfolio-a11y-close:hover {
+  background-color: var(--a11y-panel-hover) !important;
+}
+.portfolio-a11y-panel .portfolio-a11y-theme-choice {
+  background-color: var(--a11y-panel-surface) !important;
+  color: var(--a11y-panel-text) !important;
+}
+.portfolio-a11y-panel .portfolio-a11y-theme-choice[aria-pressed="true"] {
+  background-color: var(--a11y-panel-accent-bg) !important;
+  color: var(--a11y-panel-accent) !important;
+  border-color: var(--a11y-panel-accent) !important;
+}
+.portfolio-a11y-panel input[type="range"] {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--a11y-panel-text) !important;
+  accent-color: #991b1b;
+}
+.portfolio-a11y-panel button:focus-visible,
+.portfolio-a11y-panel input:focus-visible {
+  outline-color: var(--a11y-panel-accent) !important;
+}
+.portfolio-a11y-trigger,
+.portfolio-a11y-trigger:hover,
+html[data-theme="light"] .portfolio-a11y-trigger,
+html[data-theme="dark"] .portfolio-a11y-trigger {
+  background: #8b0000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+}
+.portfolio-a11y-trigger svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
