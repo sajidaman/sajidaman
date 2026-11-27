@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AccessibilityPanel } from './components/AccessibilityPanel';
 import { Footer } from './components/Footer';
 import {
   ArchiveDetailModal,
@@ -93,6 +94,8 @@ export default function App() {
       </main>
 
       <Footer currentPage={currentPage} onNavigate={navigateTo} />
+
+      <AccessibilityPanel />
 
       <ProjectDetailModal
         project={selectedProject}
