@@ -21,7 +21,7 @@ function RangeSetting({ id, label, value, min, max, step = 1, output, minLabel, 
     <div className="rounded-xl border border-neutral-200 px-3 py-2.5 dark:border-neutral-700">
       <div className="mb-1.5 flex items-center justify-between gap-2">
         <label htmlFor={id} className="text-[13px] font-medium">{label}</label>
-        <output htmlFor={id} className="text-[11px] font-semibold text-red-700 dark:text-red-300">{output}</output>
+        <output htmlFor={id} className="portfolio-a11y-value text-[11px] font-semibold">{output}</output>
       </div>
       <input id={id} type="range" min={min} max={max} step={step} value={value}
         onChange={(event) => onChange(Number(event.target.value))} className="portfolio-a11y-range w-full" />
@@ -89,11 +89,11 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     <div className="fixed bottom-5 left-5 z-[80]">
       {open && (
         <section id="portfolio-accessibility-panel" aria-label="Accessibility and display settings"
-          className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl">
+          data-theme={theme} className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl">
           <div className="mb-3 flex items-center justify-between gap-2">
             <h2 className="text-sm font-bold tracking-wide">Accessibility</h2>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close accessibility settings"
-              className="rounded-lg p-2 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700 dark:hover:bg-neutral-800"><X size={17} aria-hidden="true" /></button>
+              className="portfolio-a11y-close rounded-lg p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><X size={17} aria-hidden="true" /></button>
           </div>
           <div className="space-y-3">
             <section aria-labelledby="portfolio-a11y-display" className="space-y-1.5">
@@ -121,11 +121,11 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
               <RangeSetting id="portfolio-a11y-cursor" label="Cursor size" value={cursorSize} min={16} max={48} output={cursorSize + 'px'} minLabel="Small" maxLabel="Large" onChange={setCursorSize} />
             </section>
           </div>
-          <button type="button" onClick={reset} className="mt-3 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[11px] font-semibold text-red-700 hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700 dark:text-red-300 dark:hover:bg-red-950/40"><RotateCcw size={12} /> Reset accessibility settings</button>
+          <button type="button" onClick={reset} className="portfolio-a11y-reset mt-3 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[11px] font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><RotateCcw size={12} /> Reset accessibility settings</button>
         </section>
       )}
       <button type="button" aria-label="Open accessibility settings" aria-expanded={open} aria-controls="portfolio-accessibility-panel"
-        onClick={() => setOpen(value => !value)} className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-red-800 text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-red-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-300">
+        onClick={() => setOpen(value => !value)} className="portfolio-a11y-trigger flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-300">
         <Accessibility size={23} aria-hidden="true" />
       </button>
     </div>
