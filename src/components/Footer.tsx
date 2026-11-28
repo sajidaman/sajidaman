@@ -43,9 +43,6 @@ export function Footer({ currentPage, onNavigate }: FooterProps) {
             <div className="font-display text-sm font-semibold text-white">
               {PROFILE.name}
             </div>
-            <p className="mt-2 max-w-md text-xs leading-relaxed text-[#86868B]">
-              {PROFILE.school} · {PROFILE.classYear} · {PROFILE.location}. Independent research in computational acoustics, biomedical instrumentation, and applied mathematics.
-            </p>
             <p className="mt-4 font-mono text-[11px] tabular-nums text-zinc-500">
               ORCID {PROFILE.orcid}
             </p>
@@ -63,8 +60,8 @@ export function Footer({ currentPage, onNavigate }: FooterProps) {
         </div>
 
         <div className="mt-6 flex flex-col items-start justify-between gap-3 text-[11px] text-[#86868B] sm:flex-row sm:items-center">
-          <p>© 2026 {PROFILE.name}. Crafted in black, grey, and white.</p>
-          <p className="tabular-nums">9 Pages · Palo Alto, CA</p>
+          <p>© 2026 {PROFILE.name}.</p>
+          <p className="tabular-nums">Dhaka, Bangladesh</p>
         </div>
       </div>
     </footer>
