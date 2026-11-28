@@ -64,6 +64,7 @@ export function PdfViewer({ document, onClose }: PdfViewerProps) {
   const [matchIndex, setMatchIndex] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
   const [marks, setMarks] = useState<PdfMark[]>([]);
+  const [marksDocumentUrl, setMarksDocumentUrl] = useState('');
   const [selection, setSelection] = useState<SelectionDraft | null>(null);
   const [markColor, setMarkColor] = useState(colors[0].value);
   const [noteDraft, setNoteDraft] = useState('');
@@ -99,8 +100,10 @@ export function PdfViewer({ document, onClose }: PdfViewerProps) {
     try {
       const saved = localStorage.getItem(`sajid-pdf-marks:${document.url}`);
       setMarks(saved ? JSON.parse(saved) as PdfMark[] : []);
+      setMarksDocumentUrl(document.url);
     } catch {
       setMarks([]);
+      setMarksDocumentUrl(document.url);
     }
     pdfjs.getDocument({ url: document.url }).promise.then((result) => {
       loaded = result;
@@ -122,9 +125,9 @@ export function PdfViewer({ document, onClose }: PdfViewerProps) {
   }, [document?.url]);
 
   useEffect(() => {
-    if (!storageKey) return;
+    if (!storageKey || marksDocumentUrl !== document?.url) return;
     try { localStorage.setItem(storageKey, JSON.stringify(marks)); } catch { /* Storage may be disabled or full. */ }
-  }, [storageKey, marks]);
+  }, [storageKey, marks, marksDocumentUrl, document?.url]);
 
   useEffect(() => {
     if (!pdf) return;
