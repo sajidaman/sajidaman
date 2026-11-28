@@ -8,6 +8,7 @@ import {
 } from './components/Modals';
 import { Navbar } from './components/Navbar';
 import { AccessibilityControls } from './components/AccessibilityControls';
+import { PdfViewer, type PdfDocument } from './components/PdfViewer';
 import { AboutPage } from './pages/AboutPage';
 import { ArchivePage } from './pages/ArchivePage';
 import { AwardsPage } from './pages/AwardsPage';
@@ -48,6 +49,7 @@ export default function App() {
     useState<PublicationItem | null>(null);
   const [selectedArchive, setSelectedArchive] = useState<ArchiveItem | null>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoFrame | null>(null);
+  const [activePdf, setActivePdf] = useState<PdfDocument | null>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -92,6 +94,7 @@ export default function App() {
         onNavigate={navigateTo}
         theme={theme}
         onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
+        onOpenPdf={() => setActivePdf({ title: 'Resume', url: '/resume.pdf' })}
       />
 
       <main className="flex-1" data-page={currentPage}>
@@ -138,6 +141,7 @@ export default function App() {
       />
       </div>
       <AccessibilityControls theme={theme} onSetTheme={setTheme} />
+      <PdfViewer document={activePdf} onClose={() => setActivePdf(null)} />
     </div>
   );
 }
