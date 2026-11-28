@@ -410,3 +410,59 @@ html[data-theme="dark"] .portfolio-a11y-trigger {
 .portfolio-a11y-panel .portfolio-a11y-close:hover,.portfolio-a11y-panel [class*="hover:bg-neutral-"]:hover{background:#222!important}
 .portfolio-a11y-trigger,.portfolio-a11y-trigger:hover,html[data-theme="light"] .portfolio-a11y-trigger,html[data-theme="dark"] .portfolio-a11y-trigger{background:#000!important;color:#fff!important;border:1px solid #fff!important;-webkit-text-fill-color:#fff!important}
 .portfolio-a11y-trigger svg{color:#fff!important;stroke:#fff!important}
+
+
+/* Selectable PDF text and persistent reader annotations. */
+.pdf-viewer { color-scheme: dark; }
+.pdf-page { position: relative; overflow: hidden; }
+.pdf-text-layer {
+  z-index: 2;
+  overflow: hidden;
+  line-height: 1;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
+.pdf-text-layer span {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre;
+  color: transparent;
+  transform-origin: 0 0;
+  line-height: 1;
+  user-select: text;
+  -webkit-user-select: text;
+}
+.pdf-text-layer ::selection { background: rgba(70, 130, 255, .42); color: transparent; }
+.pdf-mark-group { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.pdf-mark {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+.pdf-mark-highlight { background: color-mix(in srgb, var(--mark-color) 52%, transparent); }
+.pdf-mark-underline { border-bottom: 2px solid var(--mark-color); }
+.pdf-mark-strike { background: linear-gradient(transparent 46%, var(--mark-color) 47%, var(--mark-color) 54%, transparent 55%); }
+.pdf-mark-note { background: color-mix(in srgb, var(--mark-color) 25%, transparent); }
+.pdf-note-pin {
+  position: absolute;
+  z-index: 4;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 1px solid #111;
+  border-radius: 50%;
+  background: #ffe66d;
+  color: #171717;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,.35);
+}
+@media print {
+  .pdf-viewer header, .pdf-viewer > div:first-of-type, .pdf-viewer aside, .pdf-viewer footer { display: none !important; }
+  .pdf-viewer main { overflow: visible !important; background: white !important; }
+  .pdf-viewer .pdf-page { break-after: page; box-shadow: none !important; }
+}
