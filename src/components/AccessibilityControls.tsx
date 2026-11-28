@@ -86,10 +86,10 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
   };
 
   return (
-    <div className="fixed bottom-5 left-5 z-[80]">
+    <div className="fixed bottom-5 left-5 z-[9999] isolate">
       {open && (
         <section id="portfolio-accessibility-panel" aria-label="Accessibility and display settings"
-          data-theme={theme} className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl">
+          data-theme={theme} className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl bg-black/95 backdrop-blur-xl">
           <div className="mb-3 flex items-center justify-between gap-2">
             <h2 className="text-sm font-bold tracking-wide">Accessibility</h2>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close accessibility settings"
