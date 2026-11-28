@@ -38,7 +38,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <button
             type="button"
             onClick={() => onNavigate('projects')}
-            className="inline-flex min-h-11 items-center rounded-full border border-current bg-current px-6 py-3 text-sm font-medium text-[var(--page-bg,#000)] transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-4"
+            className="inline-flex min-h-11 items-center rounded-full border border-current bg-current px-6 py-3 text-sm font-medium text-black transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-4"
           >
             Explore my work <span aria-hidden="true" className="ml-2">↗</span>
           </button>
