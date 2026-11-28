@@ -86,20 +86,20 @@ export function ContactPage() {
           <div className="mt-10">
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Connect</h2>
             <div className="flex flex-wrap gap-3">
-              <a href="https://www.linkedin.com/in/sajidaman01/" target="_blank" rel="noreferrer" aria-label="LinkedIn: sajidaman01" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
-                <Linkedin className="h-4 w-4" /> LinkedIn
+              <a href="https://www.linkedin.com/in/sajidaman01/" target="_blank" rel="noreferrer" aria-label="LinkedIn: sajidaman01" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Linkedin className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">LinkedIn</span><span className="font-medium text-white">sajidaman01</span></span>
               </a>
-              <a href="https://www.instagram.com/seyfert/" target="_blank" rel="noreferrer" aria-label="Instagram: seyfert" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
-                <Instagram className="h-4 w-4" /> Instagram
+              <a href="https://www.instagram.com/seyfert/" target="_blank" rel="noreferrer" aria-label="Instagram: seyfert" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Instagram className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">Instagram</span><span className="font-medium text-white">seyfert</span></span>
               </a>
-              <a href="mailto:sajidaman01@outlook.com" aria-label="Email: sajidaman01@outlook.com" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
-                <Mail className="h-4 w-4" /> Mail
+              <a href="mailto:sajidaman01@outlook.com" aria-label="Email: sajidaman01@outlook.com" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Mail className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">Mail</span><span className="font-medium text-white">sajidaman01@outlook.com</span></span>
               </a>
-              <a href="https://github.com/sajidaman" target="_blank" rel="noreferrer" aria-label="GitHub: sajidaman" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
-                <Github className="h-4 w-4" /> GitHub
+              <a href="https://github.com/sajidaman" target="_blank" rel="noreferrer" aria-label="GitHub: sajidaman" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Github className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">GitHub</span><span className="font-medium text-white">sajidaman</span></span>
               </a>
-              <a href="https://orcid.org/0009-0003-2656-5827?lang=en" target="_blank" rel="noreferrer" aria-label="ORCID profile" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
-                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#A6CE39] text-[9px] font-bold text-white">iD</span> ORCID
+              <a href="https://orcid.org/0009-0003-2656-5827?lang=en" target="_blank" rel="noreferrer" aria-label="ORCID profile" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#A6CE39] text-[9px] font-bold text-white">iD</span> <span className="flex flex-col"><span className="text-xs text-white/45">ORCID</span><span className="font-medium text-white">0009-0003-2656-5827</span></span>
               </a>
             </div>
           </div>
