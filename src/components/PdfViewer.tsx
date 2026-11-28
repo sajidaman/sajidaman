@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
 import {
   ChevronLeft, ChevronRight, Download, FileText, Maximize2, Minimize2,
   Minus, Plus, Printer, RotateCw, Search, SidebarClose, SidebarOpen, X,
@@ -419,7 +420,7 @@ export function PdfViewer({ document, onClose }: PdfViewerProps) {
               <canvas ref={(node) => { canvasRefs.current[i] = node; }} className="absolute inset-0" aria-label={`Page ${i + 1}`} />
               <div ref={(node) => { textLayerRefs.current[i] = node; }} className="pdf-text-layer absolute inset-0" />
               {marks.filter((mark) => mark.page === i + 1).map((mark) => <div key={mark.id} className="pdf-mark-group" aria-label={mark.note || mark.kind}>
-                {mark.rects.map((rect, index) => <span key={index} className={`pdf-mark pdf-mark-${mark.kind}`} style={{ left: `${rect.x * 100}%`, top: `${rect.y * 100}%`, width: `${rect.w * 100}%`, height: `${rect.h * 100}%`, '--mark-color': mark.color } as React.CSSProperties} />)}
+                {mark.rects.map((rect, index) => <span key={index} className={`pdf-mark pdf-mark-${mark.kind}`} style={{ left: `${rect.x * 100}%`, top: `${rect.y * 100}%`, width: `${rect.w * 100}%`, height: `${rect.h * 100}%`, '--mark-color': mark.color } as CSSProperties} />)}
                 {mark.kind === 'note' && <button type="button" className="pdf-note-pin" style={{ left: `${(mark.rects[0]?.x ?? 0) * 100}%`, top: `${(mark.rects[0]?.y ?? 0) * 100}%` }} title={mark.note || 'Note'} onClick={() => { setActivePanel('notes'); setPage(mark.page); }}>✎</button>}
               </div>)}
             </div>)}
