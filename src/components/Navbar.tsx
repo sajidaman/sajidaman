@@ -43,7 +43,8 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme, onOpenPd
             e.preventDefault();
             handleSelect('home');
           }}
-          className="shrink-0 rounded-sm font-["Cormorant_Garamond",serif] text-[1.65rem] font-semibold italic tracking-[-0.045em] text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+          className="shrink-0 rounded-sm text-[1.55rem] font-semibold tracking-[-0.035em] text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
         >
           Sajid Aman
         </a>
