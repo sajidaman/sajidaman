@@ -74,8 +74,8 @@ export function ContactPage() {
   const labelClass = 'block text-xs font-medium tracking-wide text-white/65';
 
   return (
-    <section className="mx-auto min-h-[70vh] w-full max-w-6xl px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="contact-heading" className="contact-page">
-      <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+    <section className="contact-page mx-auto min-h-[70vh] w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24" aria-labelledby="contact-heading">
+      <div className="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
         <div>
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/40">Get in touch</p>
           <h1 id="contact-heading" className="max-w-lg text-4xl font-semibold tracking-tight text-white sm:text-5xl">Let’s start a conversation.</h1>
@@ -86,14 +86,14 @@ export function ContactPage() {
           <div className="mt-10">
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Connect</h2>
             <div className="flex flex-wrap gap-3">
-              <a href="https://www.linkedin.com/in/sajidaman01/" target="_blank" rel="noreferrer" aria-label="LinkedIn: sajidaman01" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+              <a href="https://www.linkedin.com/in/sajidaman01/" target="_blank" rel="noreferrer" aria-label="LinkedIn: sajidaman01" className="inline-flex min-w-0 max-w-full items-center gap-3 rounded-xl border border-white/10 px-3 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white sm:px-4">
                 <Linkedin className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">LinkedIn</span><span className="font-medium text-white">sajidaman01</span></span>
               </a>
               <a href="https://www.instagram.com/seyfert/" target="_blank" rel="noreferrer" aria-label="Instagram: seyfert" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
                 <Instagram className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">Instagram</span><span className="font-medium text-white">seyfert</span></span>
               </a>
               <a href="mailto:sajidaman01@outlook.com" aria-label="Email: sajidaman01@outlook.com" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
-                <Mail className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">Mail</span><span className="font-medium text-white">sajidaman01@outlook.com</span></span>
+                <Mail className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">Mail</span><span className="break-all font-medium text-white">sajidaman01@outlook.com</span></span>
               </a>
               <a href="https://github.com/sajidaman" target="_blank" rel="noreferrer" aria-label="GitHub: sajidaman" className="inline-flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
                 <Github className="h-4 w-4" /> <span className="flex flex-col"><span className="text-xs text-white/45">GitHub</span><span className="font-medium text-white">sajidaman</span></span>
@@ -105,7 +105,7 @@ export function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-8">
+        <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.025] p-4 sm:p-6 lg:p-8">
           <div className="mb-7 flex items-center justify-between gap-4">
             <div>
               <h2 className="text-lg font-semibold text-white">Send a message</h2>
@@ -115,7 +115,7 @@ export function ContactPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
               <label className={labelClass}>
                 Your name
                 <input className={fieldClass} name="name" autoComplete="name" required minLength={2} maxLength={100} value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" />
