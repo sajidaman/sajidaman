@@ -395,3 +395,18 @@ html[data-theme="dark"] .portfolio-a11y-trigger {
   -webkit-text-fill-color: #ffffff !important;
 }
 .portfolio-a11y-trigger svg { color: #ffffff !important; stroke: #ffffff !important; }
+
+/* Strict monochrome override for every accessibility-panel control. */
+.portfolio-a11y-panel,.portfolio-a11y-panel[data-theme="light"],.portfolio-a11y-panel[data-theme="dark"]{--a11y-panel-bg:#000;--a11y-panel-surface:#0a0a0a;--a11y-panel-text:#fff;--a11y-panel-muted:#d0d0d0;--a11y-panel-border:#333;--a11y-panel-hover:#1c1c1c;--a11y-panel-accent:#fff;--a11y-panel-accent-bg:#fff;background:#000!important;color:#fff!important;border-color:#333!important;color-scheme:dark!important}
+.portfolio-a11y-panel h3,.portfolio-a11y-panel .text-neutral-500,.portfolio-a11y-panel .text-neutral-400{color:#ccc!important}
+.portfolio-a11y-panel .portfolio-a11y-value,.portfolio-a11y-panel .portfolio-a11y-reset{color:#fff!important}
+.portfolio-a11y-panel [class*="border-neutral-"],.portfolio-a11y-panel .portfolio-a11y-theme-choice{border-color:#333!important}
+.portfolio-a11y-panel .portfolio-a11y-theme-choice{background:#0a0a0a!important;color:#fff!important;border-color:#333!important}
+.portfolio-a11y-panel .portfolio-a11y-theme-choice[aria-pressed="true"]{background:#fff!important;color:#000!important;border-color:#fff!important}
+.portfolio-a11y-panel .portfolio-a11y-theme-choice[aria-pressed="true"] *{color:#000!important;stroke:#000!important}
+.portfolio-a11y-panel input[type="range"]{accent-color:#fff!important}
+.portfolio-a11y-panel input[type="range"]::-webkit-slider-thumb,.portfolio-a11y-panel input[type="range"]::-moz-range-thumb{background:#fff!important;border:1px solid #000!important}
+.portfolio-a11y-panel button:focus-visible,.portfolio-a11y-panel input:focus-visible{outline-color:#fff!important}
+.portfolio-a11y-panel .portfolio-a11y-close:hover,.portfolio-a11y-panel [class*="hover:bg-neutral-"]:hover{background:#222!important}
+.portfolio-a11y-trigger,.portfolio-a11y-trigger:hover,html[data-theme="light"] .portfolio-a11y-trigger,html[data-theme="dark"] .portfolio-a11y-trigger{background:#000!important;color:#fff!important;border:1px solid #fff!important;-webkit-text-fill-color:#fff!important}
+.portfolio-a11y-trigger svg{color:#fff!important;stroke:#fff!important}
