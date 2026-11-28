@@ -38,7 +38,10 @@ jobs:
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        run: npm run build
+        run: |
+          npm run build
+          # GitHub Pages needs an SPA fallback for direct visits and page reloads.
+          cp dist/index.html dist/404.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
