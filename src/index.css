@@ -466,3 +466,41 @@ html[data-theme="dark"] .portfolio-a11y-trigger {
   .pdf-viewer main { overflow: visible !important; background: white !important; }
   .pdf-viewer .pdf-page { break-after: page; box-shadow: none !important; }
 }
+
+/* Contact page: restore deliberate contrast and readable form surfaces in light mode. */
+html[data-theme="light"] .contact-page [class*="text-white"] {
+  color: #202329 !important;
+}
+html[data-theme="light"] .contact-page [class*="text-white/"] {
+  color: #626b76 !important;
+}
+html[data-theme="light"] .contact-page [class*="border-white/"] {
+  border-color: #dfe3e8 !important;
+}
+html[data-theme="light"] .contact-page [class*="bg-white/"] {
+  background-color: #ffffff !important;
+}
+html[data-theme="light"] .contact-page input,
+html[data-theme="light"] .contact-page textarea {
+  color: #202329 !important;
+  background-color: #ffffff !important;
+  border-color: #cbd1d9 !important;
+}
+html[data-theme="light"] .contact-page input::placeholder,
+html[data-theme="light"] .contact-page textarea::placeholder {
+  color: #858c96 !important;
+}
+html[data-theme="light"] .contact-page input:focus,
+html[data-theme="light"] .contact-page textarea:focus {
+  border-color: #555d68 !important;
+  background-color: #ffffff !important;
+}
+html[data-theme="light"] .contact-page button[type="submit"] {
+  background-color: #202329 !important;
+  color: #ffffff !important;
+}
+html[data-theme="light"] .contact-page button[type="submit"]:hover {
+  background-color: #363c45 !important;
+}
+html[data-theme="light"] .contact-page .text-emerald-200 { color: #166534 !important; }
+html[data-theme="light"] .contact-page .text-rose-200 { color: #9f1239 !important; }
