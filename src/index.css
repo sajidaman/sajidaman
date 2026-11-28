@@ -435,7 +435,7 @@ html[data-theme="dark"] .portfolio-a11y-trigger {
   -webkit-user-select: text;
 }
 .pdf-text-layer ::selection { background: rgba(70, 130, 255, .42); color: transparent; }
-.pdf-mark-group { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.pdf-mark-group { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
 .pdf-mark {
   position: absolute;
   display: block;
