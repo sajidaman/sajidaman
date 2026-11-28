@@ -43,9 +43,10 @@ export function Footer({ currentPage, onNavigate }: FooterProps) {
             <div className="font-display text-sm font-semibold text-white">
               {PROFILE.name}
             </div>
-            <p className="mt-4 font-mono text-[11px] tabular-nums text-zinc-500">
-              ORCID {PROFILE.orcid}
-            </p>
+            <a href="https://orcid.org/0009-0003-2656-5827" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] tabular-nums text-zinc-500 transition-colors hover:text-white" aria-label="ORCID profile 0009-0003-2656-5827">
+              <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#A6CE39] font-sans text-[9px] font-bold text-white">iD</span>
+              ORCID 0009-0003-2656-5827
+            </a>
           </div>
 
           <div>
