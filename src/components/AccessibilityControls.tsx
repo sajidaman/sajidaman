@@ -66,8 +66,8 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     const center = cursorSize / 2, ring = cursorSize * .32, dot = cursorSize * .14, stroke = Math.max(1, cursorSize * .045);
     const cursor = (pointer: boolean) => {
       const svg = pointer
-        ? `<svg xmlns='http://www.w3.org/2000/svg' width='${cursorSize}px' height='${cursorSize}px' viewBox='0 0 ${cursorSize} ${cursorSize}'><circle cx='${center}' cy='${center}' r='${cursorSize * .11}' fill='#A30000'/><circle cx='${center}' cy='${center}' r='${ring}' fill='none' stroke='#A30000' stroke-width='${stroke * 1.2}'/></svg>`
-        : `<svg xmlns='http://www.w3.org/2000/svg' width='${cursorSize}px' height='${cursorSize}px' viewBox='0 0 ${cursorSize} ${cursorSize}'><circle cx='${center}' cy='${center}' r='${dot}' fill='#A30000'/><circle cx='${center}' cy='${center}' r='${ring}' fill='none' stroke='#A30000' stroke-width='${stroke}'/><path d='M${center} ${cursorSize*.04}v${cursorSize*.18}M${center} ${cursorSize*.78}v${cursorSize*.18}M${cursorSize*.04} ${center}h${cursorSize*.18}M${cursorSize*.78} ${center}h${cursorSize*.18}' stroke='#A30000' stroke-width='${stroke}' stroke-linecap='round'/></svg>`;
+        ? `<svg xmlns='http://www.w3.org/2000/svg' width='${cursorSize}px' height='${cursorSize}px' viewBox='0 0 ${cursorSize} ${cursorSize}'><circle cx='${center}' cy='${center}' r='${cursorSize * .11}' fill='#ffffff'/><circle cx='${center}' cy='${center}' r='${ring}' fill='none' stroke='#ffffff' stroke-width='${stroke * 1.2}'/></svg>`
+        : `<svg xmlns='http://www.w3.org/2000/svg' width='${cursorSize}px' height='${cursorSize}px' viewBox='0 0 ${cursorSize} ${cursorSize}'><circle cx='${center}' cy='${center}' r='${dot}' fill='#ffffff'/><circle cx='${center}' cy='${center}' r='${ring}' fill='none' stroke='#ffffff' stroke-width='${stroke}'/><path d='M${center} ${cursorSize*.04}v${cursorSize*.18}M${center} ${cursorSize*.78}v${cursorSize*.18}M${cursorSize*.04} ${center}h${cursorSize*.18}M${cursorSize*.78} ${center}h${cursorSize*.18}' stroke='#ffffff' stroke-width='${stroke}' stroke-linecap='round'/></svg>`;
       return `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${center} ${center}, ${pointer ? 'pointer' : 'auto'}`;
     };
     root.style.setProperty('--a11y-cursor-default', cursor(false));
@@ -93,7 +93,7 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
           <div className="mb-3 flex items-center justify-between gap-2">
             <h2 className="text-sm font-bold tracking-wide">Accessibility</h2>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close accessibility settings"
-              className="portfolio-a11y-close rounded-lg p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><X size={17} aria-hidden="true" /></button>
+              className="portfolio-a11y-close rounded-lg p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"><X size={17} aria-hidden="true" /></button>
           </div>
           <div className="space-y-3">
             <section aria-labelledby="portfolio-a11y-display" className="space-y-1.5">
@@ -101,8 +101,8 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
               <div className="rounded-xl border border-neutral-200 px-3 py-3 dark:border-neutral-700">
                 <span className="mb-1.5 block text-[13px] font-medium">Colour theme</span>
                 <div className="grid grid-cols-2 gap-2" role="group" aria-label="Colour theme">
-                  <button type="button" aria-pressed={theme === 'light'} onClick={() => onSetTheme('light')} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Sun size={14} /> Light</button>
-                  <button type="button" aria-pressed={theme === 'dark'} onClick={() => onSetTheme('dark')} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><Moon size={14} /> Dark</button>
+                  <button type="button" aria-pressed={theme === 'light'} onClick={() => onSetTheme('light')} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"><Sun size={14} /> Light</button>
+                  <button type="button" aria-pressed={theme === 'dark'} onClick={() => onSetTheme('dark')} className="portfolio-a11y-theme-choice inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"><Moon size={14} /> Dark</button>
                 </div>
               </div>
               <RangeSetting id="portfolio-a11y-brightness" label="Brightness" value={brightness} min={50} max={150} output={brightness + '%'} minLabel="Dim" maxLabel="Bright" onChange={setBrightness} />
@@ -121,11 +121,11 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
               <RangeSetting id="portfolio-a11y-cursor" label="Cursor size" value={cursorSize} min={16} max={48} output={cursorSize + 'px'} minLabel="Small" maxLabel="Large" onChange={setCursorSize} />
             </section>
           </div>
-          <button type="button" onClick={reset} className="portfolio-a11y-reset mt-3 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[11px] font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"><RotateCcw size={12} /> Reset accessibility settings</button>
+          <button type="button" onClick={reset} className="portfolio-a11y-reset mt-3 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[11px] font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"><RotateCcw size={12} /> Reset accessibility settings</button>
         </section>
       )}
       <button type="button" aria-label="Open accessibility settings" aria-expanded={open} aria-controls="portfolio-accessibility-panel"
-        onClick={() => setOpen(value => !value)} className="portfolio-a11y-trigger flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-300">
+        onClick={() => setOpen(value => !value)} className="portfolio-a11y-trigger flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
         <Accessibility size={23} aria-hidden="true" />
       </button>
     </div>
