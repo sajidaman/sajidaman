@@ -91,7 +91,9 @@ export function isValidPageId(value: string): value is PageId {
 }
 
 export function parsePageFromPath(pathname: string): PageId {
-  const normalized = pathname.trim().toLowerCase().replace(/\/+$/, '') || '/';
+  // Accept both legacy path routes and GitHub Pages-safe hash routes (/#/about).
+  const route = pathname.trim().startsWith('#') ? pathname.trim().slice(1) : pathname.trim();
+  const normalized = route.toLowerCase().replace(/\\/+$/, '') || '/';
   return PATH_TO_PAGE[normalized] ?? 'home';
 }
 
