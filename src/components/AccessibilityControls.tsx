@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { Accessibility, Moon, RotateCcw, Sun, Type, X } from 'lucide-react';
 
 type RangeSettingProps = {
@@ -86,8 +85,8 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
     setMotion(0); setFocusStrength(3); setCursorSize(20); setBrightness(100);
   };
 
-  return createPortal(
-    <div className="fixed bottom-5 left-5 z-[2147483647] isolate">
+  return (
+    <div className="fixed bottom-5 left-5 z-[9999] isolate">
       {open && (
         <section id="portfolio-accessibility-panel" aria-label="Accessibility and display settings"
           data-theme={theme} className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl bg-black/95 backdrop-blur-xl">
@@ -129,7 +128,6 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
         onClick={() => setOpen(value => !value)} className={`portfolio-a11y-trigger flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white ${theme === "dark" ? "bg-black text-white border border-white" : "bg-white text-black border border-black"}`}>
         <Accessibility size={23} aria-hidden="true" />
       </button>
-    </div>,
-    document.body
+    </div>
   );
 }
