@@ -42,7 +42,7 @@ export default function App() {
     }
   });
   const [currentPage, setCurrentPage] = useState<PageId>(() =>
-    parsePageFromPath(window.location.pathname)
+    parsePageFromPath(window.location.hash || window.location.pathname)
   );
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [selectedPublication, setSelectedPublication] =
@@ -62,11 +62,15 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
-    const handlePopState = () => {
-      setCurrentPage(parsePageFromPath(window.location.pathname));
+    const handleLocationChange = () => {
+      setCurrentPage(parsePageFromPath(window.location.hash || window.location.pathname));
     };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -79,8 +83,8 @@ export default function App() {
 
   const navigateTo = (page: PageId) => {
     const targetPath = getPathForPage(page);
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState({ page }, '', targetPath);
+    if (window.location.hash !== `#${targetPath}`) {
+      window.location.hash = targetPath;
     }
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
