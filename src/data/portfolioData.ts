@@ -21,7 +21,7 @@ export const PROFILE = {
   school: 'Palo Alto High School',
   location: 'Palo Alto, California',
   email: 'ananya.nair@paly-research.org',
-  orcid: '0009-0004-8192-3041',
+  orcid: '0009-0003-2656-5827',
   githubHandle: 'ananyanair-lab',
   tagline: 'Precision inquiry, built from first principles.',
   subtitle:
