@@ -86,7 +86,7 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
   };
 
   return (
-    <div className="fixed bottom-5 left-5 z-[9999] isolate">
+    <div className="fixed bottom-5 right-5 z-[9999] isolate flex flex-col items-end">
       {open && (
         <section id="portfolio-accessibility-panel" aria-label="Accessibility and display settings"
           data-theme={theme} className="portfolio-a11y-panel mb-2.5 h-[min(30rem,calc(100dvh-7rem))] w-[min(21rem,calc(100vw-2.5rem))] overflow-y-auto rounded-2xl border p-3 shadow-2xl bg-black/95 backdrop-blur-xl">
