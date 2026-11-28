@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { ArrowUpRight, CheckCircle2, LoaderCircle, Mail, Send } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, LoaderCircle, Send } from 'lucide-react';
 
 type SubmissionState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -82,14 +82,6 @@ export function ContactPage() {
           <p className="mt-6 max-w-md text-sm leading-7 text-white/55">
             Have a question, an opportunity, a research idea, or simply want to connect? Send me a message and I’ll get back to you.
           </p>
-          <a href="mailto:contact.sferavis@gmail.com" className="mt-9 inline-flex items-center gap-3 rounded-xl border border-white/15 px-4 py-3 text-sm text-white/80 transition hover:border-white/40 hover:bg-white/[0.05]">
-            <Mail className="h-4 w-4" />
-            contact.sferavis@gmail.com
-            <ArrowUpRight className="h-4 w-4 text-white/40" />
-          </a>
-          <p className="mt-8 max-w-sm text-xs leading-6 text-white/35">
-            Your message is submitted securely to the portfolio’s Supabase database. Your email address is used only to respond to your enquiry.
-          </p>
         </div>
 
         <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-8">
@@ -136,7 +128,6 @@ export function ContactPage() {
                 <span>{feedback}</span>
               </div>
             )}
-            {!configured && <p className="text-[11px] leading-5 text-white/35">Online submissions will become available after the Supabase project credentials are configured.</p>}
           </form>
         </div>
       </div>
