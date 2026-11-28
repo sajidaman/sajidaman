@@ -8,9 +8,10 @@ interface NavbarProps {
   onNavigate: (page: PageId) => void;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
+  onOpenPdf: () => void;
 }
 
-export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: NavbarProps) {
+export function Navbar({ currentPage, onNavigate, theme, onToggleTheme, onOpenPdf }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -77,8 +78,7 @@ export function Navbar({ currentPage, onNavigate, theme, onToggleTheme }: Navbar
         <div className="flex shrink-0 items-center gap-3">
           <a
             href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={(event) => { event.preventDefault(); onOpenPdf(); }}
             data-resume-cta="true"
             className={`portfolio-resume-button hidden lg:inline-flex ${resumeButtonClass}`}
           >
