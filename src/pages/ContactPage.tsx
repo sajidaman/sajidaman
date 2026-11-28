@@ -74,7 +74,7 @@ export function ContactPage() {
   const labelClass = 'block text-xs font-medium tracking-wide text-white/65';
 
   return (
-    <section className="mx-auto min-h-[70vh] w-full max-w-6xl px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="contact-heading">
+    <section className="mx-auto min-h-[70vh] w-full max-w-6xl px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="contact-heading" className="contact-page">
       <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div>
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/40">Get in touch</p>
