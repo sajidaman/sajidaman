@@ -27,8 +27,7 @@ function RangeSetting({ id, label, value, min, max, step = 1, output, minLabel, 
       <input id={id} type="range" min={min} max={max} step={step} value={value}
         onChange={(event) => onChange(Number(event.target.value))} className="portfolio-a11y-range w-full" />
       <div className="mt-1 flex justify-between text-[9px] text-neutral-500 dark:text-neutral-400"><span>{minLabel}</span><span>{maxLabel}</span></div>
-    </div>,
-    document.body
+    </div>
   );
 }
 
@@ -130,6 +129,7 @@ export function AccessibilityControls({ theme, onSetTheme }: Props) {
         onClick={() => setOpen(value => !value)} className={`portfolio-a11y-trigger flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white ${theme === "dark" ? "bg-black text-white border border-white" : "bg-white text-black border border-black"}`}>
         <Accessibility size={23} aria-hidden="true" />
       </button>
-    </div>
+    </div>,
+    document.body
   );
 }
