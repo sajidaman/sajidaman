@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { ArrowUpRight, CheckCircle2, LoaderCircle, Send } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Github, Instagram, Linkedin, LoaderCircle, Mail, Send } from 'lucide-react';
 
 type SubmissionState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -30,7 +30,7 @@ export function ContactPage() {
 
     if (!configured) {
       setStatus('error');
-      setFeedback('The contact service is not configured yet. Please use the email link below for now.');
+      setFeedback('The contact service is not configured yet. Please try again later.');
       return;
     }
 
@@ -82,6 +82,27 @@ export function ContactPage() {
           <p className="mt-6 max-w-md text-sm leading-7 text-white/55">
             Have a question, an opportunity, a research idea, or simply want to connect? Send me a message and I’ll get back to you.
           </p>
+
+          <div className="mt-10">
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Connect</h2>
+            <div className="flex flex-wrap gap-3">
+              <a href="https://www.linkedin.com/in/sajidaman01/" target="_blank" rel="noreferrer" aria-label="LinkedIn: sajidaman01" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Linkedin className="h-4 w-4" /> LinkedIn
+              </a>
+              <a href="https://www.instagram.com/seyfert/" target="_blank" rel="noreferrer" aria-label="Instagram: seyfert" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+              <a href="mailto:sajidaman01@outlook.com" aria-label="Email: sajidaman01@outlook.com" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Mail className="h-4 w-4" /> Mail
+              </a>
+              <a href="https://github.com/sajidaman" target="_blank" rel="noreferrer" aria-label="GitHub: sajidaman" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <Github className="h-4 w-4" /> GitHub
+              </a>
+              <a href="https://orcid.org/0009-0003-2656-5827?lang=en" target="_blank" rel="noreferrer" aria-label="ORCID profile" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-white/70 transition hover:border-white/35 hover:bg-white/[0.05] hover:text-white">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#A6CE39] text-[9px] font-bold text-white">iD</span> ORCID
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-8">
